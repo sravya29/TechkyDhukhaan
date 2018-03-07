@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Techy-dhukhan</string>
+    <string name="searchname">search</string>
+    <string name="helloeveryone">hello</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string-array name="my_products">
+        <item>books</item>
+        <item>books1</item>
+        <item>books2</item>
+        <item>books3</item>
+
+    </string-array>
+
+</resources>

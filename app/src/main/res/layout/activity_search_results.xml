@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/wp">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvYourProducts"
+        android:text="SEARCH RESULTS: "
+        android:textSize="25sp"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+
+        android:textColor="@android:color/black"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <ListView
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:background="#E3F2FD"
+        android:layout_height="match_parent"
+        android:id="@+id/lvProducts"
+        android:layout_below="@+id/tvYourProducts">
+
+    </ListView>
+
+</RelativeLayout>
