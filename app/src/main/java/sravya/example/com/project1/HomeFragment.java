@@ -34,8 +34,10 @@ public class HomeFragment extends android.support.v4.app.Fragment{
         herolist.add(new Hero(R.drawable.ic_menu_camera));
         herolist.add(new Hero((R.drawable.ic_menu_gallery)));
         herolist.add(new Hero(R.drawable.books));
-        herolist.add(new Hero(R.drawable.books));
-        herolist.add(new Hero(R.drawable.books));
+        herolist.add(new Hero(R.drawable.electronics));
+        herolist.add(new Hero(R.drawable.civil));
+        herolist.add(new Hero(R.drawable.software));
+        herolist.add(new Hero(R.drawable.mechanical));
        // ArrayList<String> prueba = new ArrayList<String>();
        /* prueba.add("Element1");
         prueba.add("Element2");

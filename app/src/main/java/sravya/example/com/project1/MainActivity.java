@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.SearchViewCompat;
 import android.support.v7.widget.SearchView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.SearchEvent;
 import android.view.View;
@@ -21,6 +22,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -74,8 +76,14 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
 
-                openactivity2();
-
+                EditText search=(EditText)findViewById(R.id.search_text);
+                String searches= search.getText().toString();
+                if(TextUtils.isEmpty(searches)) {
+                    Toast.makeText(getBaseContext(), "search bar should not be empty...please enter any prduct name", Toast.LENGTH_LONG).show();
+                    search.setError("Should not be empty");
+                }
+                else
+                    openactivity2();
             }
 
         });

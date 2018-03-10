@@ -25,9 +25,9 @@
         android:id="@+id/searchid"></SearchView>-->
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Search here..."
+            android:id="@+id/search_text"
             android:paddingTop="10dp"
             android:paddingRight="5dp"
             android:paddingLeft="5dp"
@@ -35,6 +35,7 @@
             android:textStyle="bold"
             android:textAlignment="center"
             android:textColor="@android:color/white"
+            android:text=""
             android:background="#90CAF9"/>
 
         <Button
