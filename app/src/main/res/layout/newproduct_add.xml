@@ -83,7 +83,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/upload" />
-
     <TextView
         android:id="@+id/imghead"
         android:layout_width="wrap_content"

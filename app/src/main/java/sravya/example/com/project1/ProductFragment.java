@@ -38,8 +38,8 @@ public class ProductFragment extends android.support.v4.app.Fragment {
         listView1=(ListView)findViewById(R.id.listView1);
         ProductListAdapter adapter=new ProductListAdapter(new MainActivity(),R.layout.product_mylist,productList);
         listView1.setAdapter(adapter);*/
-        View v = inflater.inflate(R.layout.product_mylist, container, false);
-        ListView lstItems = (ListView)v.findViewById(R.id.listView1);
+        View v = inflater.inflate(R.layout.myproductlist, container, false);
+        ListView lstItems = (ListView)v.findViewById(R.id.lvProducts);
         productList=new ArrayList<>();
         return v;
     }
@@ -47,7 +47,7 @@ public class ProductFragment extends android.support.v4.app.Fragment {
     @Override
     public void onViewCreated( View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        view.findViewById(R.id.button).setOnClickListener(new View.OnClickListener()
+        view.findViewById(R.id.editbutton).setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
@@ -55,7 +55,7 @@ public class ProductFragment extends android.support.v4.app.Fragment {
                 Toast.makeText(getActivity(),"you edited item",Toast.LENGTH_SHORT).show();
             }
         });
-        view.findViewById(R.id.button1).setOnClickListener(new View.OnClickListener()
+        view.findViewById(R.id.delbutton).setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
@@ -63,46 +63,9 @@ public class ProductFragment extends android.support.v4.app.Fragment {
                 Toast.makeText(getActivity(),"you deleted item",Toast.LENGTH_SHORT).show();
             }
         });
-        view.findViewById(R.id.floatid).setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                android.support.v4.app.Fragment fragment2=new NewProductFragment();
-                if(fragment2!=null)
-                {
-                    FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
-                    FragmentTransaction ft2=fragmentManager.beginTransaction();
-                    ft2.replace(R.id.drawer_layout,fragment2).addToBackStack(null);
-                    ft2.commit();
-                }
-            }
-        });
-       view.findViewById(R.id.homebutton).setOnClickListener(new View.OnClickListener()
-        {
-          @Override
-            public void onClick(View view)
-            {
-               /* HomeFragment fragment2=new HomeFragment();
-                if(fragment2!=null)
-                {
-                    FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
-                    FragmentTransaction ft2=fragmentManager.beginTransaction();
-                    ft2.replace(R.id.content_frame,fragment2);
-                    ft2.commit();
-                }
-                DrawerLayout drawer = (DrawerLayout)view.findViewById(R.id.drawer_layout);
-                drawer.closeDrawer(GravityCompat.START);*/
-                /*Intent intent=new Intent(view.getContext(),HomeFragment.class);
-                view.getContext().startActivity(intent);
-                getActivity().finish();
-*/
-                Intent homeintent=new Intent(view.getContext(),MainActivity.class);
-                startActivity(homeintent);
 
 
-            }
-        });
+
     }
 
 }

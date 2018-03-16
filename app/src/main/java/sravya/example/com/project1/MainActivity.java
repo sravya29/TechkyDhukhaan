@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity
         */
         herolist.add(new Hero(R.drawable.ic_menu_gallery));
         herolist.add(new Hero(R.drawable.ic_menu_camera));
-        herolist.add(new Hero((R.drawable.ic_menu_gallery)));
+     //   herolist.add(new Hero((R.drawable.ic_menu_gallery)));
         herolist.add(new Hero(R.drawable.books));
         herolist.add(new Hero(R.drawable.electronics));
         herolist.add(new Hero(R.drawable.civil));
@@ -203,13 +203,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_manage) {
 
-            fragment = new ProductFragment();
-            if (fragment != null) {
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction ft = fragmentManager.beginTransaction();
-                ft.replace(R.id.content_frame, fragment);
-                ft.commit();
-            }
+            openactivity2();
         }
 
 

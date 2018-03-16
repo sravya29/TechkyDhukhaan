@@ -1,25 +1,12 @@
 package sravya.example.com.project1;
 
-import android.app.Activity;
-import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.widget.Button;
-import android.widget.ListView;
-
-import java.util.ArrayList;
-import java.util.List;
-
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -27,18 +14,15 @@ import android.widget.ListView;
 import com.microsoft.windowsazure.mobileservices.MobileServiceClient;
 import com.microsoft.windowsazure.mobileservices.MobileServiceException;
 import com.microsoft.windowsazure.mobileservices.table.MobileServiceTable;
-import com.microsoft.windowsazure.mobileservices.table.sync.MobileServiceSyncContext;
-import com.microsoft.windowsazure.mobileservices.table.sync.localstore.ColumnDataType;
-import com.microsoft.windowsazure.mobileservices.table.sync.localstore.MobileServiceLocalStoreException;
-import com.microsoft.windowsazure.mobileservices.table.sync.localstore.SQLiteLocalStore;
-import com.microsoft.windowsazure.mobileservices.table.sync.synchandler.SimpleSyncHandler;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
-public class SearchResultsActivity extends Activity {
+/**
+ * Created by SRAVYA on 12-03-2018.
+ */
+
+public class MyProductListActivity extends Activity {
     private MobileServiceClient mClient;
     private MobileServiceTable<Product> mProductTable;
     private MyProductAdapter mAdapter;
@@ -54,7 +38,7 @@ public class SearchResultsActivity extends Activity {
 
         try {
 
-            AzureMobileServiceAdapter.Initialize(SearchResultsActivity.this);
+            AzureMobileServiceAdapter.Initialize(MyProductListActivity.this);
             mClient = AzureMobileServiceAdapter.getInstance().getClient();
 
             mProductTable = mClient.getTable(Product.class);
@@ -69,14 +53,6 @@ public class SearchResultsActivity extends Activity {
             floatbutton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    fragment1=new NewProductFragment();
-                    if(fragment1!=null)
-                    {
-                        FragmentManager fragmentManager=getSupportFragmentManager();
-                        FragmentTransaction ft1=fragmentManager.beginTransaction();
-                        ft1.replace(R.id.content_frame,fragment1);
-                        ft1.commit();
-                    }
 
                 }
             });

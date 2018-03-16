@@ -1,6 +1,8 @@
 package sravya.example.com.project1;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.app.Fragment;
@@ -17,9 +19,16 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.microsoft.windowsazure.mobileservices.MobileServiceClient;
+import com.microsoft.windowsazure.mobileservices.table.MobileServiceTable;
+
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by SRAVYA on 30-01-2018.
@@ -32,6 +41,9 @@ public class NewProductFragment extends android.support.v4.app.Fragment{
     Button upload,submit;
     EditText descript,pricee;
     ImageView pic;
+    List<Product1> item;
+    private MobileServiceClient mClient;
+    private MobileServiceTable<Product> mProductTable;
     @Nullable
     @Override
     public View onCreateView(final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -39,6 +51,19 @@ public class NewProductFragment extends android.support.v4.app.Fragment{
         if(container!=null)
         {
             container.removeAllViews();
+
+        }
+        try {
+
+            AzureMobileServiceAdapter.Initialize(getActivity());
+            mClient = AzureMobileServiceAdapter.getInstance().getClient();
+
+            mProductTable = mClient.getTable(Product.class);
+
+            //mTextProdName = (EditText) findViewById(R.id.textProdName);
+//            mTextProdPrice = (EditText) findViewById(R.id.textProdPrice);
+
+        } catch (Exception e){
 
         }
         head= (TextView)v.findViewById(R.id.head);
@@ -74,13 +99,11 @@ public class NewProductFragment extends android.support.v4.app.Fragment{
             public void onClick(View view) {
                 if (TextUtils.isEmpty(descript.getText().toString())
                         ) {
+                    Toast.makeText(getActivity(), "Please enter product description", Toast.LENGTH_SHORT).show();
 
                 }
                 Intent homeintent=new Intent(view.getContext(),MainActivity.class);
                 startActivity(homeintent);
-
-                Toast.makeText(getActivity(), "Please enter product description", Toast.LENGTH_SHORT).show();
-
 
             }
         });
@@ -88,26 +111,12 @@ public class NewProductFragment extends android.support.v4.app.Fragment{
         return v;
 
     }
-   /* @Override
-    public void onViewCreated( View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
 
-        view.findViewById(R.id.submit).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view){
-                android.support.v4.app.Fragment fragment4 =new ProductFragment();
-                 if(fragment4!=null)
-                {
-                    FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
-                    FragmentTransaction ft5=fragmentManager.beginTransaction();
-                    ft5.replace(R.id.drawer_layout,fragment4);
-                    ft5.commit();
-                }
-               /*DrawerLayout drawer = (DrawerLayout)view.findViewById(R.id.drawer_layout);
-                drawer.closeDrawer(GravityCompat.START);*/
+    public Product addItemInTable(Product item) throws ExecutionException, InterruptedException {
+        return mProductTable.insert(item).get();
+    }
+    private AsyncTask<Void, Void, Void> runAsyncTask(AsyncTask<Void, Void, Void> task) {
+        return task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+    }
 
-               // Toast.makeText(getActivity(), "you submitted item", Toast.LENGTH_SHORT).show();
-       /*     }
-        });
-    }*/
 }
